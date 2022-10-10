@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeedleStore.UI.MVC", "BeedleStore.UI.MVC\BeedleStore.UI.MVC.csproj", "{9B7A8BC2-C17A-4EA6-AEF9-39A7EAB891E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeedleStore.DATA.EF", "BeedleStore.DATA.EF\BeedleStore.DATA.EF.csproj", "{637C2E4C-E398-4902-9207-A7E7C0420E8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B7A8BC2-C17A-4EA6-AEF9-39A7EAB891E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7A8BC2-C17A-4EA6-AEF9-39A7EAB891E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7A8BC2-C17A-4EA6-AEF9-39A7EAB891E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7A8BC2-C17A-4EA6-AEF9-39A7EAB891E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637C2E4C-E398-4902-9207-A7E7C0420E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637C2E4C-E398-4902-9207-A7E7C0420E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637C2E4C-E398-4902-9207-A7E7C0420E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637C2E4C-E398-4902-9207-A7E7C0420E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E70E841A-37E6-4DC3-8960-73C6FBC96954}
+	EndGlobalSection
+EndGlobal

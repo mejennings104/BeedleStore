@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<BeedleStore.DATA.EF.Models.Product>
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -94,7 +96,7 @@
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
 										<!-- product -->
-@*										@foreach (var item in Model)
+										@foreach (var item in Model)
 										{
 
 											<div class="product">
@@ -134,7 +136,7 @@
 												</a>
 											</div>
 										}
-*@										
+										
 										<!-- /product -->
 
 									</div>

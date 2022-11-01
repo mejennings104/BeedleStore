@@ -1,6 +1,7 @@
 ﻿using BeedleStore.DATA.EF.Models;
 using BeedleStore.UI.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using System.Diagnostics;
 using System.Net.Mail;
@@ -24,7 +25,9 @@ namespace BeedleStore.UI.MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var products = _context.Products.Where(p => !p.IsDiscontinued).Take(4).Include(p => p.Category);
+
+            return View(products.ToList());
         }
 
         #region Contact Form

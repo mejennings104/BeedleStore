@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +16,23 @@ namespace BeedleStore.DATA.EF.Models
 	[ModelMetadataType(typeof(CategoryMetadata))]
 	public partial class Category { }
 
-	[ModelMetadataType(typeof(CategoryMetadata))]
-	public partial class Product { }
+	[ModelMetadataType(typeof(OrderMetadata))]
+	public partial class Order { }
 
-	[ModelMetadataType(typeof(CategoryMetadata))]
+	[ModelMetadataType(typeof(ProductMetadata))]
+	public partial class Product 
+	{
+        [NotMapped]
+        public IFormFile? Image { get; set; }
+
+    }
+
+    [ModelMetadataType(typeof(SupplierMetadata))]
 	public partial class Supplier { }
+
+	[ModelMetadataType(typeof(UserDetailMetadata))]
+	public partial class UserDetail
+	{
+		public string FullName { get { return $"{FirstName} {LastName}"; } }
+	}
 }

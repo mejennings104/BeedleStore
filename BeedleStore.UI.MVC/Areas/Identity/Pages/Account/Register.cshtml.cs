@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using BeedleStore.DATA.EF.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -97,6 +98,33 @@ namespace BeedleStore.UI.MVC.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [StringLength(50, ErrorMessage = "Maximum 50 characters")]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [StringLength(50, ErrorMessage = "Maximum 50 characters")]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [StringLength(150, ErrorMessage = "Maximum 150 characters")]
+            public string? Address { get; set; }
+
+            [StringLength(50, ErrorMessage = "Maximum 50 characters")]
+            public string? City { get; set; }
+
+            [StringLength(2, ErrorMessage = "Maximum 2 characters")]
+            public string? State { get; set; }
+
+            [StringLength(5, ErrorMessage = "Maximum 5 characters")]
+            public string? Zip { get; set; }
+
+            [StringLength(24, ErrorMessage = "Maximum 24 characters")]
+            public string? Phone { get; set; }
+
+
         }
 
 
@@ -123,6 +151,38 @@ namespace BeedleStore.UI.MVC.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    #region Extend Identity - Step 3
+
+                    //Create a new UserDetails object and assign it values from the Register Model
+                    //After creating the object, we will use our GadgetStoreContext to save that object 
+                    // to the UserDetails table in the DB
+                    //Note: To access our DB context, we need 'using GadgetStore.DATA.EF.Models'
+
+                    BeedleStoreContext _context = new BeedleStoreContext();
+
+                    //Instantiate the UserDetails object, assign values to the object from the Input Model,
+                    // save the UwserDetails object to the DB
+                    UserDetail userDetail = new UserDetail()
+                    {
+                        //object initialization syntax
+                        UserId = userId,
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName,
+                        Address = Input.Address,
+                        City = Input.City,
+                        State = Input.State,
+                        Zip = Input.Zip,
+                        Phone = Input.Phone
+                    };
+                    //Queuing the record up to be saved to the DB
+                    _context.UserDetails.Add(userDetail);
+                    //Save the record to the DB
+                    _context.SaveChanges();
+
+                    #endregion
+
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(

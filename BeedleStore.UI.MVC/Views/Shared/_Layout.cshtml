@@ -103,51 +103,16 @@
                             <div>
                                 <a href="#">
                                     <i class="fa fa-heart-o"></i>
-                                    <span>Your Wishlist</span>
-                                    <div class="qty">2</div>
+                                    <span>Your Wishlist</span>                                    
                                 </a>
                             </div>
                             <!-- /Wishlist -->
                             <!-- Cart -->
                             <div class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                    <i class="fa fa-shopping-cart"></i>
+                                <a href=@Url.Action("Index", "ShoppingCart") class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i  class="fa fa-shopping-cart"></i>
                                     <span>Your Cart</span>
-                                    <div class="qty">3</div>
                                 </a>
-                                <div class="cart-dropdown">
-                                    <div class="cart-list">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/product02.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="cart-summary">
-                                        <small>3 Item(s) selected</small>
-                                        <h5>SUBTOTAL: $2940.00</h5>
-                                    </div>
-                                    <div class="cart-btns">
-                                        <a href="#">View Cart</a>
-                                        <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /Cart -->
                             <!-- Menu Toogle -->
@@ -177,13 +142,8 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>                    
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="@Url.Action("Index", "Products")">Products</a></li>
-                    <li><a href="#">Shields</a></li>
-                    <li><a href="#">Food</a></li>
-                    <li><a href="#">Weapons</a></li>
-                    <li><a href="#">Armor</a></li>
+                    <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("TiledProducts", "Products")">All Products</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>
@@ -253,11 +213,10 @@
                         <div class="footer">
                             <h3 class="footer-title">Categories</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Hot deals</a></li>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Accessories</a></li>
+                                <li><a asp-controller="Products" asp-action="TiledProducts" asp-route-categoryId="1">Shields</a></li>
+                                <li><a asp-controller="Products" asp-action="TiledProducts" asp-route-categoryId="2">Food</a></li>
+                                <li><a asp-controller="Products" asp-action="TiledProducts" asp-route-categoryId="3">Weapons</a></li>
+                                <li><a asp-controller="Products" asp-action="TiledProducts" asp-route-categoryId="4">Armor</a></li>
                             </ul>
                         </div>
                     </div>
